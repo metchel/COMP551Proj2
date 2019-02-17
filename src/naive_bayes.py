@@ -8,6 +8,8 @@ class BernoulliNaiveBayes():
         self.feature_probabilities = {0: [], 1: []}
 
     def fit(self, X, y):
+        if isinstance(X, list):
+            X = np.array(X)
         n, m = X.shape
         class_counts = {0: 0, 1: 0}
         feature_counts = {0: np.zeros(m), 1: np.zeros(m)}

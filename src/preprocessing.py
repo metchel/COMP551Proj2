@@ -19,14 +19,13 @@ class Preprocessor():
         if self.questions:
             features['questions'] = text.count('?')
         tokens = nltk.word_tokenize(text)
-        
         if self.word_count:
             features['word_count'] = len(tokens)
         if self.all_caps:
             all_caps = [w for w in tokens if w.isupper()]
             features['all_caps'] = len(all_caps)
 
-        return features
+        return list(features.values())
 
     def vectorize(self, data, MAX_FEATURES=5000):
         if not self.is_vectorized:
